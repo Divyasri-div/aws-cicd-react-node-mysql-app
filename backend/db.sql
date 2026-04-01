@@ -1,7 +1,7 @@
 -- Create Database and User
 CREATE DATABASE react_node_app; 
 CREATE USER 'appuser'@'%' IDENTIFIED BY 'learnIT02#'; 
-GRANT ALL PRIVILEGES ON react_node_app.* TO ' appuser'@'%'; 
+GRANT ALL PRIVILEGES ON react_node_app.* TO 'appuser'@'%'; 
 FLUSH PRIVILEGES; 
 
 
