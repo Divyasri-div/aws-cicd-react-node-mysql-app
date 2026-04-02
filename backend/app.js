@@ -23,7 +23,7 @@ db.connect((err) => {
 //Health Checking
 app.get('/health',(req,res) => {
    logger.info('Health check endpoint');
-   res.json("Health check endpoint");
+   res.status(200).send('OK');
 });
 
 app.use('/api', routes);
