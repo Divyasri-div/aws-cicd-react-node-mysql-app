@@ -7,12 +7,15 @@ const user = process.env.DB_USER || 'appuser';
 const password = process.env.DB_PASSWORD || 'learnIT02#';
 const database = process.env.DB_NAME || 'react_node_app';
 
-const db = mysql.createConnection({
+const pool = mysql.createPool({
    host: host,
    port: port,
    user: user,
    password: password,
    database: database
+   waitForConnections: true,
+   connectioinLimit: 10,
+   queueLimit: 0
 });
 
-module.exports = db;
+module.exports = pool;
