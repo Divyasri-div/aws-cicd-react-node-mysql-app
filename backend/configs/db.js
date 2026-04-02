@@ -6,7 +6,6 @@ const port = process.env.DB_PORT || '3306';
 const user = process.env.DB_USER || 'appuser';
 const password = process.env.DB_PASSWORD || 'learnIT02#';
 const database = process.env.DB_NAME || 'react_node_app';
-
 const pool = mysql.createPool({
    host: host,
    port: port,
