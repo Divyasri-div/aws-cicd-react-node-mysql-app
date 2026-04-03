@@ -2,26 +2,25 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const cors = require('cors');
-const db = require('./configs/db'); // Import the db connection
-const logger = require('./utils/logger'); // Import logger
+const db = require('./configs/db');
+const logger = require('./utils/logger');
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
-db.connect((err) => {
+/* Test DB connection once (optional but safe) */
+db.query('SELECT 1', (err) => {
    if (err) {
-      logger.error(`Error connecting to MySQL: ${err.stack}`);
-      return;
+      logger.error(`Error connecting to MySQL: ${err.message}`);
+   } else {
+      logger.info('Connected to MySQL Database');
    }
-
-   logger.info('Connected to MySQL Database');
 });
 
-/* Add your routes here */
-//Health Checking
-app.get('/health',(req,res) => {
+/* Health Check */
+app.get('/health', (req, res) => {
    logger.info('Health check endpoint');
    res.status(200).send('OK');
 });
