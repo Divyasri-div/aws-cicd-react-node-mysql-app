@@ -1,20 +1,13 @@
 const mysql = require('mysql2');
 require('dotenv').config();
 
-const host = process.env.DB_HOST || 'dev-db-instance.cfmik4k60hm1.ap-south-1.rds.amazonaws.com';
-const port = process.env.DB_PORT || '3306';
-const user = process.env.DB_USER || 'appuser';
-const password = process.env.DB_PASSWORD || 'learnIT02#';
-const database = process.env.DB_NAME || 'react_node_app';
 const pool = mysql.createPool({
-   host: host,
-   port: port,
-   user: user,
-   password: password,
-   database: database
-   waitForConnections: true,
-   connectioinLimit: 10,
-   queueLimit: 0
+   connectionLimit: 10,
+   host: process.env.DB_HOST || 'dev-db-instance.cfmik4k60hm1.ap-south-1.rds.amazonaws.com',
+   port: process.env.DB_PORT || 3306,
+   user: process.env.DB_USER || 'appuser',
+   password: process.env.DB_PASSWORD || 'learnIT02#',
+   database: process.env.DB_NAME || 'react_node_app'
 });
 
 module.exports = pool;
